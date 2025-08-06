@@ -1,8 +1,8 @@
-from flask import Blueprint, request, jsonify, session
-from status import create_status
-
 import openai
 
+from flask import Blueprint, request, jsonify, session
+from status import create_status
+from services.prompt_engineering import generate_json_from_extracted_texts
 
 apikey_bp=Blueprint("apikey",__name__)
 
@@ -37,8 +37,21 @@ def store_apikey():
     
     session["api_key"]=api_key
 
-    status["message"]="store_apikey: API Key saved successfully"
+    status["message"]="store_apikey: Success"
     status["code"]=200
     
     return jsonify(status),status["code"]
+
+@apikey_bp.route("/service/generate_json",methods=["GET"])
+def generate_json():
+    status=create_status()
+    try:
+        status["data"]=generate_json_from_extracted_texts()
+        status["message"]="store_apikey: Sucess"
+        status["code"]=200
+        return jsonify(status),status["code"]
+    except Exception as e:
+        print(str(e))
+        return 
+
 

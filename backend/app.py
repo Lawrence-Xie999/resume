@@ -3,7 +3,7 @@ import os
 from flask import Flask
 from services.openai_client import apikey_bp
 from dotenv import load_dotenv
-from routes.upload import upload_bp
+from docs.upload import upload_bp
 
 load_dotenv()
 
