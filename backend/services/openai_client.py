@@ -42,12 +42,17 @@ def store_apikey():
     
     return jsonify(status),status["code"]
 
-@apikey_bp.route("/service/generate_json",methods=["GET"])
+@apikey_bp.route("/service/generate_json",methods=["POST"])
 def generate_json():
     status=create_status()
+    resume_text=request.form.get("resume_text")
+    jd_text=request.form.get("jd_text")
+    # if resume_text and jd_text:
+    #     status["message"]="Success"
+    #     return status
     try:
-        status["data"]=generate_json_from_extracted_texts()
-        status["message"]="store_apikey: Sucess"
+        status["data"]=generate_json_from_extracted_texts(resume_text,jd_text)
+        status["message"]="store_apikey: Success"
         status["code"]=200
         return jsonify(status),status["code"]
     except Exception as e:

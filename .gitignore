@@ -1,3 +1,5 @@
 uploads/*
+backend/services/test.json
+backend/templates/test.html
 !uploads/.gitkeep
 .env
