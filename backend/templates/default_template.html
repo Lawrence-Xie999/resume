@@ -3,254 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ basics.name }} - Resume</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        /* Reset and base styles */
-        html, body {
+        @page {
+            size: A4;
+            margin: 0.5in;  /* Reduced margin to give more space */
+        }
+        
+        body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', 'Arial', sans-serif;
-            background: #fff;
-            color: #222;
-            font-size: 15px;
-            line-height: 1.5;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+            color: #333;
         }
-        body {
-            max-width: 850px;
-            margin: 40px auto;
-            padding: 40px 50px;
-            box-shadow: 0 0 12px #eee;
-            background: #fff;
+        
+        .container {
+            max-width: 7in;
+            margin: 0 auto;
+            padding: 0;
         }
-        h1, h2, h3 {
-            margin: 0 0 8px 0;
-            font-weight: 600;
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
         }
-        h1 {
-            font-size: 2.2em;
-            letter-spacing: 1px;
+        
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
-        h2 {
-            font-size: 1.2em;
-            color: #2d6cdf;
-            border-bottom: 1.5px solid #e0e0e0;
-            padding-bottom: 2px;
-            margin-top: 28px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+        
+        .contact {
+            font-size: 11px;
+            color: #666;
         }
+        
+        /* Sections */
         .section {
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
-        .contact-info {
-            margin-top: 8px;
-            font-size: 1em;
-            color: #444;
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c5aa0;
+            border-bottom: 1px solid #2c5aa0;
+            margin-bottom: 8px;
+            padding-bottom: 2px;
         }
-        .contact-info span {
-            margin-right: 18px;
+        
+        /* Education */
+        .edu-item {
+            margin-bottom: 10px;
         }
-        .contact-info a {
-            color: #2d6cdf;
-            text-decoration: none;
-        }
-        .two-col {
-            display: flex;
-            gap: 32px;
-        }
-        .left-col {
-            flex: 2;
-        }
-        .right-col {
-            flex: 1.2;
-        }
-        .edu-entry, .work-entry, .project-entry {
-            margin-bottom: 16px;
-        }
-        .edu-header, .work-header, .project-header {
+        
+        .edu-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
         }
-        .edu-degree, .work-title, .project-title {
-            font-weight: 600;
+        
+        .edu-institution {
+            font-weight: bold;
+            font-size: 12px;
         }
-        .edu-institution, .work-company {
+        
+        .edu-dates {
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .edu-degree {
             font-style: italic;
-            color: #444;
+            margin-top: 2px;
         }
-        .edu-date, .work-date, .project-date {
-            color: #888;
-            font-size: 0.98em;
-            margin-left: 10px;
-            white-space: nowrap;
+        
+        .edu-details {
+            font-size: 10px;
+            color: #666;
+            margin-top: 2px;
         }
-        .edu-location, .work-location {
-            color: #888;
-            font-size: 0.98em;
-            margin-left: 10px;
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
-        ul {
-            margin: 6px 0 0 18px;
-            padding: 0;
+        
+        .skill-category {
+            margin-bottom: 8px;
         }
-        ul li {
+        
+        .skill-name {
+            font-weight: bold;
             margin-bottom: 3px;
         }
-        .skills-list, .keywords-list {
+        
+        .skill-items {
+            font-size: 10px;
+        }
+        
+        /* Work Experience */
+        .work-item {
+            margin-bottom: 12px;
+        }
+        
+        .work-header {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px 14px;
-            margin: 4px 0 0 0;
-            padding: 0;
-            list-style: none;
+            justify-content: space-between;
+            align-items: baseline;
         }
-        .skills-list li, .keywords-list li {
-            background: #f2f6fa;
-            color: #2d6cdf;
-            border-radius: 4px;
-            padding: 2px 10px;
-            font-size: 0.98em;
-            margin-bottom: 2px;
+        
+        .work-company {
+            font-weight: bold;
+            font-size: 12px;
         }
-        /* Responsive */
-        @media (max-width: 700px) {
-            body {
-                padding: 18px 6vw;
-            }
-            .two-col {
-                flex-direction: column;
-                gap: 0;
-            }
+        
+        .work-dates {
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .work-position {
+            font-style: italic;
+            margin-top: 2px;
+            font-size: 11px;
+        }
+        
+        .work-location {
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .highlights {
+            margin-top: 5px;
+            padding-left: 15px;
+        }
+        
+        .highlights li {
+            margin-bottom: 3px;
+            font-size: 10px;
+        }
+        
+        /* Projects */
+        .project-item {
+            margin-bottom: 12px;
+        }
+        
+        .project-name {
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+        
+        .project-keywords {
+            font-size: 9px;
+            color: #666;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <h1>{{ basics.name }}</h1>
-    <div class="contact-info">
-        <span>{{ basics.address }}</span>
-        <span>{{ basics.email }}</span>
-        <span>{{ basics.phone }}</span>
-        <span>
-            <a href="https://{{ basics.website }}" target="_blank">{{ basics.website }}</a>
-        </span>
-    </div>
-
-    <div class="two-col">
-        <!-- Left Column: Education, Work, Projects -->
-        <div class="left-col">
-            <!-- Education -->
-            <div class="section">
-                <h2>Education</h2>
-                {% for edu in education %}
-                <div class="edu-entry">
-                    <div class="edu-header">
-                        <span class="edu-degree">{{ edu.studyType }} in {{ edu.area }}</span>
-                        <span class="edu-date">{{ edu.startDate }} – {{ edu.endDate }}</span>
-                    </div>
-                    <div>
-                        <span class="edu-institution">{{ edu.institution }}</span>,
-                        <span class="edu-location">{{ edu.location }}</span>
-                        {% if edu.score %}
-                        <span class="edu-score">| {{ edu.score }}</span>
-                        {% endif %}
-                    </div>
-                    {% if edu.additionalAreas %}
-                    <div>
-                        <span style="color:#888;font-size:0.97em;">Relevant Coursework:</span>
-                        <span>
-                            {{ edu.additionalAreas | join(', ') }}
-                        </span>
-                    </div>
-                    {% endif %}
-                </div>
-                {% endfor %}
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="name">{{ basics.name }}</div>
+            <div class="contact">
+                {{ basics.email }} | {{ basics.phone }} | {{ basics.address }}
+                {% if basics.website %}
+                | <a href="https://{{ basics.website }}">{{ basics.website }}</a>
+                {% endif %}
             </div>
+        </div>
 
-            <!-- Work Experience -->
-            <div class="section">
-                <h2>Experience</h2>
-                {% for job in work %}
-                <div class="work-entry">
-                    <div class="work-header">
-                        <span class="work-title">{{ job.position }}</span>
-                        <span class="work-date">{{ job.startDate }} – {{ job.endDate }}</span>
-                    </div>
-                    <div>
-                        <span class="work-company">{{ job.company }}</span>,
-                        <span class="work-location">{{ job.location }}</span>
-                    </div>
-                    <ul>
-                        {% for item in job.highlights %}
-                        <li>{{ item }}</li>
-                        {% endfor %}
-                    </ul>
+        <!-- Education -->
+        <div class="section">
+            <div class="section-title">EDUCATION</div>
+            {% for edu in education %}
+            <div class="edu-item">
+                <div class="edu-header">
+                    <div class="edu-institution">{{ edu.institution }}</div>
+                    <div class="edu-dates">{{ edu.startDate }} - {{ edu.endDate }}</div>
                 </div>
-                {% endfor %}
+                <div class="edu-degree">{{ edu.studyType }} in {{ edu.area }}</div>
+                {% if edu.score %}
+                <div class="edu-details">{{ edu.score }}</div>
+                {% endif %}
+                {% if edu.location %}
+                <div class="edu-details">{{ edu.location }}</div>
+                {% endif %}
+                {% if edu.additionalAreas %}
+                <div class="edu-details">Relevant Coursework: {{ edu.additionalAreas | join(', ') }}</div>
+                {% endif %}
             </div>
+            {% endfor %}
+        </div>
 
-            <!-- Projects -->
-            <div class="section">
-                <h2>Projects</h2>
-                {% for proj in projects %}
-                <div class="project-entry">
-                    <div class="project-header">
-                        <span class="project-title">{{ proj.name }}</span>
-                        {% if proj.url %}
-                        <span class="project-link"><a href="{{ proj.url }}" target="_blank">[Link]</a></span>
-                        {% endif %}
-                    </div>
-                    <ul>
-                        {% for item in proj.highlights %}
-                        <li>{{ item }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% if proj.keywords %}
-                    <ul class="keywords-list">
-                        {% for kw in proj.keywords %}
-                        <li>{{ kw }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
+        <!-- Technical Skills -->
+        <div class="section">
+            <div class="section-title">TECHNICAL SKILLS</div>
+            <div class="skills-grid">
+                {% for skill in skills %}
+                <div class="skill-category">
+                    <div class="skill-name">{{ skill.name }}:</div>
+                    <div class="skill-items">{{ skill.keywords | join(', ') }}</div>
                 </div>
                 {% endfor %}
             </div>
         </div>
 
-        <!-- Right Column: Skills, Awards -->
-        <div class="right-col">
-            <!-- Skills -->
-            <div class="section">
-                <h2>Skills</h2>
-                {% for skill in skills %}
-                <div>
-                    <strong>{{ skill.name }}:</strong>
-                    <ul class="skills-list">
-                        {% for kw in skill.keywords %}
-                        <li>{{ kw }}</li>
-                        {% endfor %}
-                    </ul>
+        <!-- Work Experience -->
+        <div class="section">
+            <div class="section-title">WORK EXPERIENCE</div>
+            {% for job in work %}
+            <div class="work-item">
+                <div class="work-header">
+                    <div class="work-company">{{ job.company }}</div>
+                    <div class="work-dates">{{ job.startDate }} - {{ job.endDate }}</div>
                 </div>
-                {% endfor %}
-            </div>
-            <!-- Awards (if any) -->
-            {% if awards and awards|length > 0 %}
-            <div class="section">
-                <h2>Awards</h2>
-                <ul>
-                    {% for award in awards %}
-                    <li>
-                        <strong>{{ award.title }}</strong> - {{ award.date }}<br>
-                        <span>{{ award.awarder }}</span>
-                        <div>{{ award.summary }}</div>
-                    </li>
+                <div class="work-position">{{ job.position }}</div>
+                <div class="work-location">{{ job.location }}</div>
+                <ul class="highlights">
+                    {% for highlight in job.highlights %}
+                    <li>{{ highlight }}</li>
                     {% endfor %}
                 </ul>
             </div>
-            {% endif %}
+            {% endfor %}
         </div>
+
+        <!-- Projects -->
+        <div class="section">
+            <div class="section-title">PROJECTS</div>
+            {% for project in projects %}
+            <div class="project-item">
+                <div class="project-name">{{ project.name }}</div>
+                <div class="project-keywords">{{ project.keywords | join(' • ') }}</div>
+                <ul class="highlights">
+                    {% for highlight in project.highlights %}
+                    <li>{{ highlight }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Awards (if any) -->
+        {% if awards and awards|length > 0 %}
+        <div class="section">
+            <div class="section-title">AWARDS</div>
+            {% for award in awards %}
+            <div>{{ award.title }} - {{ award.date }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
 </body>
 </html>

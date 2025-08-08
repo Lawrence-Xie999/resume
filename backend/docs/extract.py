@@ -39,7 +39,7 @@ def extract_bp()->str:
 
     if not resume_filename or jd_filename:
         status["message"] = "extract_text"
-        status["error"] = "No filename provided"
+        status["error"] = "No filename"
         status["code"] = 400
         return jsonify(status), status["code"]
     

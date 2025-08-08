@@ -1,5 +1,7 @@
 uploads/*
 backend/services/test.json
 backend/templates/test.html
+backend/docs/test.py
 !uploads/.gitkeep
+*.pyc
 .env
